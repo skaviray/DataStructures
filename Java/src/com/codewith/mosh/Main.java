@@ -1,4 +1,7 @@
 package com.codewith.mosh;
+
+import java.util.Arrays;
+
 class Main {
 
     public static void main(String[] args) {
@@ -7,6 +10,12 @@ class Main {
         list.addFirst(20);
         list.addFirst(30);
         System.out.println((list.indexOf(30)));
+        System.out.println(list.contains(40));
+        // list.removeLast();
+        // // list.removeLast();
+        System.out.println(Arrays.toString(list.toArray()));
+        // list.removeLast();
+        // System.out.println(list.first);
     }
     }
 
