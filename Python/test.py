@@ -1,0 +1,14 @@
+from LinkedLists import LinkedList
+
+list = LinkedList()
+list.addLast(10)
+list.addLast(20)
+list.addFirst(30)
+list.addFirst(40)
+list.removeFirst()
+list.removeLast()
+print(list.last.value)
+print(list.first.value)
+print(list.indexOf(10))
+print(list.toList())
+print(list.length())
