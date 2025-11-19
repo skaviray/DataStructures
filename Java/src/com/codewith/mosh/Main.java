@@ -9,13 +9,16 @@ class Main {
         list.addLast(10);
         list.addFirst(20);
         list.addFirst(30);
+        list.addFirst(50);
+        list.addFirst(60);
         System.out.println((list.indexOf(30)));
         System.out.println(list.contains(40));
         // list.removeLast();
         // // list.removeLast();
         System.out.println(Arrays.toString(list.toArray()));
-        list.reverse();
-        System.out.println(Arrays.toString(list.toArray()));
+        System.out.println(list.findKthFromEnd(6));
+        // list.reverse();
+        // System.out.println(Arrays.toString(list.toArray()));
         // list.removeLast();
         // System.out.println(list.first);
     }

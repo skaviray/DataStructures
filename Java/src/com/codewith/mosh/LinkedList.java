@@ -116,4 +116,29 @@ public class LinkedList {
         last.next = null;
         first = previous;
     }
+    public int findKthFromEnd(int k) {
+        if (isEmpty()) {
+            throw  new  IllegalStateException();
+        }
+        var p1 = first;
+        var p2 = first;
+        if (k == 0) {
+            throw  new  IllegalArgumentException();
+        } else if (k > size) {
+            return -1;
+        } else if (k == size) {
+            return first.value;
+        }
+        for (var i=0; i< k-1; i++) {
+            p2 = p2.next;
+            if (p2 == null) {
+               throw  new  IllegalArgumentException(); 
+            }
+        }
+        while(p2 != last) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1.value;
+    }
 }

@@ -83,6 +83,7 @@ class LinkedList():
     ## O(1)
     def length(self):
         return self.size
+    ## O(n)
     def reverse(self):
         if self.isEmpty():
             return None
@@ -96,6 +97,7 @@ class LinkedList():
         self.last = self.first
         self.last.next = None
         self.first = previous
+
     def reverseNewList(self):
         reversedLinkedList = LinkedList()
         reversedList = []
@@ -111,6 +113,20 @@ class LinkedList():
                 reversedList.append(current.value)
             current = previous
         return reversedLinkedList
+    
+    def findKthFromEnd(self, k):
+        if (self.isEmpty() | self.size == k | self.size < k):
+            raise ValueError
+        else:
+            p1 = p2 = self.first
+            for i in range(0, k-1):
+                # p1 = p1.next
+                p2 = p2.next
+            while(p2 != self.last):
+                p1 = p1.next
+                p2 = p2.next
+            return p1.value
+        
     # def addFist(self, item):
 
     # def indexOf(self, item): d d
