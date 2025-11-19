@@ -14,6 +14,8 @@ class Main {
         // list.removeLast();
         // // list.removeLast();
         System.out.println(Arrays.toString(list.toArray()));
+        list.reverse();
+        System.out.println(Arrays.toString(list.toArray()));
         // list.removeLast();
         // System.out.println(list.first);
     }

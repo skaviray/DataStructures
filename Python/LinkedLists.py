@@ -60,6 +60,7 @@ class LinkedList():
             if current.next == item:
                 return current
             current = current.next
+        # return None
     ## O(n)
     def removeLast(self):
         if self.isEmpty():
@@ -82,6 +83,34 @@ class LinkedList():
     ## O(1)
     def length(self):
         return self.size
+    def reverse(self):
+        if self.isEmpty():
+            return None
+        previous = self.first
+        current = self.first.next
+        while current != None:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        self.last = self.first
+        self.last.next = None
+        self.first = previous
+    def reverseNewList(self):
+        reversedLinkedList = LinkedList()
+        reversedList = []
+        current = self.last
+        for i in range(0,self.size):
+            previous = self.getPrevious(current)
+            if previous == None:
+                reversedLinkedList.addLast(current.value)
+                reversedList.append(current.value)
+                break
+            else:
+                reversedLinkedList.addLast(current.value   )
+                reversedList.append(current.value)
+            current = previous
+        return reversedLinkedList
     # def addFist(self, item):
 
     # def indexOf(self, item): d d
