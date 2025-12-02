@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: local
+  vars:
+    bmc_ip: "172.28.97.88"
+    bmc_username: "Administrator"
+    bmc_password: "Admin@9000"
+  tasks:
+    - name: Create Redfish Session
+      uri:
+        url: "https://{{ bmc_ip }}/redfish/v1/SessionService/Sessions"
+        method: POST
+        validate_certs: no # same as curl --insecure
+        headers:
+          Content-Type: "application/json"
+        body:
+          UserName: "{{ bmc_username }}"
+          Password: "{{ bmc_password }}"
+        body_format: json
+        status_code: 200, 201, 202
+        return_content: yes
+      register: session_response
+
+    - set_fact:
+        session_token: "{{ session_response.json['Oem']['xFusion']['X-Auth-Token'] }}"
+        session_id: "{{ session_response.json['Id'] }}"
+
+    - name: Ejecting the virtual media
+      uri:
+        url: "https://{{ bmc_ip }}/redfish/v1/Managers/1/VirtualMedia/CD/Actions/VirtualMedia.EjectMedia"
+        method: POST
+        validate_certs: no
+        headers:
+          Content-Type: "application/json"
+          X-Auth-Token: "{{ session_token }}"
+        body:
+          UserName: "{{ bmc_username }}"
+          Password: "{{ bmc_password }}"
+        body_format: json
+        status_code: 200, 201, 202
+        return_content: yes
+      register: eject_response
+
+    - debug: msg="{{ eject_response.json['TaskState'] }}"

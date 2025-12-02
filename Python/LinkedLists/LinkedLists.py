@@ -127,6 +127,19 @@ class LinkedList():
                 p2 = p2.next
             return p1.value
         
+    def findMiddle(self):
+        if self.isEmpty():
+            raise ValueError
+        fp = sp = self.first
+        while(sp != self.last and sp.next != self.last):
+            fp = fp.next
+            sp = sp.next.next
+        if (sp == self.last):
+            return fp.value
+        else:
+            return ','.join((str(fp.value), str(fp.next.value)))
+        return fp.value
+
     # def addFist(self, item):
 
     # def indexOf(self, item): d d

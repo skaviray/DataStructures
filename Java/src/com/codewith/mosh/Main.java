@@ -1,26 +1,35 @@
 package com.codewith.mosh;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 class Main {
-
+    public static Character getFirstNonRepeatedChar(String str) {
+        Map<Character,Integer> frequentlyRepeteadString = new  HashMap<>();
+        for (var ch : str.toCharArray()) {
+            if (frequentlyRepeteadString.containsKey(ch)) {
+                var currentCount = frequentlyRepeteadString.get(ch);
+                frequentlyRepeteadString.put(ch, currentCount + 1);
+            } else {
+                frequentlyRepeteadString.put(ch, 1);
+            }
+        }
+        for (var ch : str.toCharArray()) {
+            if (frequentlyRepeteadString.get(ch) == 1) {
+                return  ch;
+            }
+        }
+        return null;
+    }
     public static void main(String[] args) {
-        var list = new LinkedList();
-        list.addLast(10);
-        list.addFirst(20);
-        list.addFirst(30);
-        list.addFirst(50);
-        list.addFirst(60);
-        System.out.println((list.indexOf(30)));
-        System.out.println(list.contains(40));
-        // list.removeLast();
-        // // list.removeLast();
-        System.out.println(Arrays.toString(list.toArray()));
-        System.out.println(list.findKthFromEnd(6));
-        // list.reverse();
-        // System.out.println(Arrays.toString(list.toArray()));
-        // list.removeLast();
-        // System.out.println(list.first);
+        // Map<Integer,String> map = new  HashMap<>();
+        // map.put(1,"shiva");
+        // map.put(2,"Manasa");
+        // map.put(3,"Amulya");
+        // System.out.println(map.get(2))
+        var input = "a green apple";
+        var firstNonRepeatedChar = getFirstNonRepeatedChar(input);
+        System.out.println(firstNonRepeatedChar);
     }
     }
 

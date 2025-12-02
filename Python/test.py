@@ -1,4 +1,4 @@
-from LinkedLists import LinkedList
+from Python.LinkedLists.LinkedLists import LinkedList
 
 list = LinkedList()
 list.addLast(10)
